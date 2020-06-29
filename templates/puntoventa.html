@@ -1,0 +1,105 @@
+{% extends 'base.html' %} {% load static %} {% block cuerpo %}
+<div class="row">
+
+  <div class="col">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">seleccione un cliente</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01">
+          <option selected>defauld</option>
+          <option >maria</option>
+          <option >angela</option>
+          <option >tomasa</option>
+        </select>
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Descuento</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01">
+          <option selected>No</option>
+          <option>Si</option>
+        </select>
+    </div>
+    <div class="container row">
+        
+        <div class="card text-center" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Peinado</h5>
+              <p class="card-text">Atendido por Vanessa</p>
+            </div>
+        </div>
+        
+        <div class="card text-center" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Uñas</h5>
+              <p class="card-text">Atendido por Yolanda</p>
+            </div>
+        </div>
+        
+        <div class="card text-center" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Cejas</h5>
+              <p class="card-text">Atendido por Ricardo</p>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <table class="table table-borderless">
+        <thead class="thead-green">
+          <tr>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Descuento</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Peinado</th>
+            <td> </td>
+            <td> </td>
+            <td><a href="#"><i class=" tamaño2 icon icon-trash">&#xe80d;</i></a></td>
+          </tr>
+          <tr class="border-bottom border-dark">
+            <td><span class="border border-success p-2">1</span></td>
+            <td>0%</td>
+            <td><span class="border border-success p-2">5000</span></td>
+            <td>7000</td>
+          </tr>
+          <tr>
+            <th>uñas</th>
+            <td> </td>
+            <td> </td>
+            <td><a href="#"><i class=" tamaño2 icon icon-trash">&#xe80d;</i></a></td>
+          </tr>
+          <tr class="border-bottom border-dark">
+            <td><span class="border border-success p-2">1</span></td>
+            <td>0%</td>
+            <td><span class="border border-success p-2">5000</span></td>
+            <td>5000</td>
+          </tr>
+          <tr>
+            <th>cejas</th>
+            <td> </td>
+            <td> </td>
+            <td><a href="#"><i class=" tamaño2 icon icon-trash">&#xe80d;</i></a></td>
+          </tr>
+          <tr class="border-bottom border-dark">
+            <td><span class="border border-success p-2">1</span></td>
+            <td>0%</td>
+            <td><span class="border border-success p-2">5000</span></td>
+            <td>8000</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <a href="{% url 'formapago' %}" class="btn btn-success input-group-text">Cobrar</a>
+        </div>
+        <span type="text" class="form-control bg-secondary text-white text-right">20000</span>
+      </div>
+  </div>
+</div>
+{% endblock cuerpo %}

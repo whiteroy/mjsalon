@@ -1,0 +1,79 @@
+{% extends 'base.html' %} {% load static %} {% block cuerpo %}
+<div class="row">
+  <div class="col-md-auto">
+    <div class="input-group mb-3">
+      <input type="date" class="form-control" />
+      <div class="input-group-append">
+        <button class="btn btn-success alargue2" type="submit">
+          <i class="icon icon-search">&#xe820;</i>
+        </button>
+      </div>
+    </div>
+
+    <ul class="list-group">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Total de citas pendientes:
+        <span class="badge badge-primary badge-pill">14</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Citas del mes
+        <span class="badge badge-primary badge-pill">2</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <span id="citadehoy">Citas de hoy jueves</span>
+        <span class="badge badge-primary badge-pill">1</span>
+      </li>
+    </ul>
+    <br />
+    <br />
+    <div>Reasumen ventas</div>
+    <table class="table table-danger table-hover">
+      <tbody>
+        <thead>
+          <tr>
+            <th>Efectivo</th>
+            <th>Tarjeta</th>
+            <th>Total Ventas</th>
+          </tr>
+        </thead>
+        <tr>
+          <td>$6000</td>
+          <td>$3000</td>
+          <td>$9000</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-md-auto">
+    <div class="calendar">
+      <div class="calendar__info">
+        <div class="calendar__prev" id="prev-month">&#9664;</div>
+        <div class="calendar__month" id="month"></div>
+        <div class="calendar__year" id="year"></div>
+        <div class="calendar__next" id="next-month">&#9654;</div>
+      </div>
+
+      <div class="calendar__week">
+        <div class="calendar__day calendar__item">Domingo</div>
+        <div class="calendar__day calendar__item">Lunes</div>
+        <div class="calendar__day calendar__item">Martes</div>
+        <div class="calendar__day calendar__item">Miercoles</div>
+        <div class="calendar__day calendar__item">Jueves</div>
+        <div class="calendar__day calendar__item">Viernes</div>
+        <div class="calendar__day calendar__item">Sabado</div>
+      </div>
+
+      <div class="calendar__dates" id="dates"></div>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'js/calendario.js' %}"></script>
+<script>
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+  });
+  </script>
+
+{% endblock cuerpo %}

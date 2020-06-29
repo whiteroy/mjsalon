@@ -1,0 +1,57 @@
+{% extends 'base.html' %} {% load static %} 
+
+{% block cuerpo %}
+<div class="container">
+     <h2 class="nav justify-content-center">
+      CITAS AGENDADAS
+    </h2>
+</div>
+<div class="container">
+    <table class="table table-hover table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Hora</th>
+            <th scope="col">Servicio</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Confirmación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>22-6-2020</td>
+            <td>3:30</td>
+            <td>Peluqueria</td>
+            <td>Andrea</td>
+            <td class="text-center"><input type="checkbox" class="form-check-input" value=""></td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>miriam</td>
+            <td>23-6-2020</td>
+            <td>8:30</td>
+            <td>Cejas</td>
+            <td>Milagros</td>
+            <td class="text-center"><input type="checkbox" class="form-check-input" value=""></td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Daniela</td>
+            <td>25-12-2020</td>
+            <td>5:30</td>
+            <td>Uñas</td>
+            <td>Norelvis</td>
+            <td class="text-center"><input type="checkbox" class="form-check-input" value=""></td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+      
+{% endblock cuerpo %}
+    
+

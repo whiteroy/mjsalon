@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{% static 'media/gamer.jpg' %}" type="image/x-icon" />
+    {% if title %}
+    <title>{{nosotros.nombre}}/{{title}}</title>
+    {% else %}
+    <title>{{nosotros.nombre}}</title>
+    {% endif %}
+    <link rel="stylesheet" href=" {% static 'css/base.css' %} " />
+    <link rel="stylesheet" href=" {% static 'css/bootstrap.css' %} " />
+    <link rel="stylesheet" href=" {% static 'css/font.css' %} " />
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src=" {% static 'js/bootstrap.js' %}"></script>
+  </head>
+  <body>
+    {% block encabezado %}
+    <header>
+      <nav class="navbar navbar-light" style="background: linear-gradient(to left, #29445c, #7eb0df);">
+        {% if title == 'jefe' %}
+        <a href="{% url 'jefe' %}" class="navbar-brand">
+          <img src="{% static 'media/salamandra.png' %}" alt="" style="width: 2rem;" />
+          <i class="icon icon-home">&#xe803;</i>
+        </a>
+        {% else %}
+        <a href="{% url 'home' %}" class="navbar-brand">
+          <img src="{% static 'media/salamandra.png' %}" alt="" style="width: 2rem;" />
+          <i class="icon icon-home">&#xe803;</i>
+        </a>
+        {% endif %}
+
+        <form class="form-inline">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            <i class="icon icon-login">&#xf02c;</i>
+            Login
+          </button>
+        </form>
+      </nav>
+    </header>
+
+    {% endblock encabezado %}
+
+    <div class="row">
+      <div class="col-2">
+        {% block barralateral %}
+
+        <div class="btn-group-vertical">
+
+          <div class="btn-group dropright">
+          
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="tamaño2 icon icon-calendar">&#xe825;</i>
+              Calendario/Citas
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="{% url 'citas' %}">Agendar cita</a>
+              <a class="dropdown-item" href="{% url 'ver_citas' %}">Ver citas</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Estadistica de citas</a>
+            </div>
+    
+          </div>
+
+          <div class="btn-group dropright">
+          
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="tamaño2 icon icon-money">&#xf0d6;</i>
+              Tienda
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="{% url 'ac_caja' %}">Apertura/Cierre de caja</a>
+              <a class="dropdown-item" href="{% url 'puntoventa' %}">Caja</a>
+              <a class="dropdown-item" href="#">General de ventas</a>
+              <a class="dropdown-item" href="#">Acumulado de ventas</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Reporte de servicios</a>
+              <a class="dropdown-item" href="#">Estadistica de ventas</a>
+            </div>
+          </div>
+
+          <div class="btn-group dropright">
+
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="tamaño2 icon icon-calendar">&#xe825;</i>
+              Inventarios
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Agregar</a>
+              <a class="dropdown-item" href="#">Existencia</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Consulta detalle agregados</a>
+              <a class="dropdown-item" href="#">Consulta general agregados</a>
+            </div>
+  
+          </div>
+
+          <div class="btn-group dropright">
+ 
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="tamaño2 icon icon-edit">&#xe828;</i>
+              Catalogos
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Manejo de productos</a>
+              <a class="dropdown-item" href="#">Consulta de productos</a>
+              <a class="dropdown-item" href="#">Manejo de proveedores</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Manejo de area</a>
+            </div>
+  
+          </div>
+          <div class="btn-group dropright">
+    
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="tamaño2 icon icon-user-pair">&#xe826;</i>
+              Clientes
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Registrar cliente</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">################</a>
+            </div>
+
+            </div>
+
+            <div class="btn-group dropright">
+          
+              <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="tamaño2 icon icon-users">&#xe827;</i>
+                Usuarios
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Registrar/Editar Usuarios</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Modificar contraseñas</a>
+              </div>
+    
+            </div>
+
+        </div>
+
+
+
+
+        {% endblock barralateral %}
+      </div>
+      <div class="col-lg-8">
+        {% block cuerpo %} {% endblock cuerpo %}
+      </div>
+    </div>
+    <footer class="panel-footer">
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+      </div>
+      <nav class="navbar navbar-dark bg-dark">
+        <h5 class="navbar-brand" >© Roymer Javier Lopez Castro</h5>
+  
+
+        <form class="form-inline">
+          <h5 class="border border-success p-2 text-light" >
+            2020
+          </h5>
+        </form>
+      </nav>
+    </footer>
+    <script src="{% static 'js/base.js' %}"></script>
+  </body>
+</html>

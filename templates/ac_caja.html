@@ -1,0 +1,426 @@
+{% extends 'base.html' %} {% load static %} 
+
+
+{% block cuerpo %}
+<div class="container">
+ 
+    <!-- Button to Open the Modal -->
+    <div class="jumbotron text-center">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Acaja">
+        Abrir caja
+      </button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Ccaja">
+        Cierre de caja
+      </button>
+    </div>
+    
+  
+    <!-- The Modal -->
+    <div class="modal fade" id="Acaja">
+      <div class="modal-dialog">
+        <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <h4 class="modal-title">APERTURA DE CAJA</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          
+          <!-- Modal body -->
+          <div class="modal-body">
+              <div class="form-group row">
+                <label for="eticataidcaja" class="col-sm-3 col-form-label">Caja</label>
+                <div class="col-sm-8">
+                  <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="3" readonly>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="etiquetausuario" class="col-sm-3 col-form-label">Usuario</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control-plaintext" placeholder="Andrea Bornachera" readonly>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="etiquetafecha" class="col-sm-3 col-form-label">Fecha apertura</label>
+                <div class="col-sm-8">
+                  <label for="fechapertura" id="fechapertura" class="form-control-plaintext"></label>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="etiquetabase" class="col-sm-3 col-form-label">Base</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" placeholder="0">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="etiquetaobservaciones" class="col-sm-3 col-form-label">Observaciones</label>
+                <div class="col-sm-8">
+                  <textarea name="observaciones" id="observaciones" cols="30" rows="5" class="form-control" ></textarea>
+                </div>
+              </div>
+          </div>
+          
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <label for="etiquetacaja" class="col-form-label">Caja cerrada</label>
+            <button type="button" class="btn btn-danger">Abrir caja</button>
+          </div>  
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="modal fade" id="Ccaja">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+        <div class="modal-header">
+            <h4 class="modal-title">CIERRE DE CAJA</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="row">
+              <div class="col">
+                <label for="etiquetausuario" class="col col-form-label">Usuario</label>
+                <input type="text" class="col form-control-plaintext" placeholder="Andrea Bornachera" readonly>
+              </div>
+              <div class="col">
+                <label for="etiquetafecha" class="col col-form-label">Fecha apertura</label>
+                <label for="fechapertura" id="fechabrir" class="col form-control-plaintext"></label>
+              </div>
+              <div class="col">
+                <label for="etiquetabase" class="col col-form-label">Base</label>
+                <label for="nbase" class="col col-form-label">12</label>
+              </div>
+            </div>
+
+            
+              <table class="table table-borderless table-sm">
+                <tbody>
+                  <tr>
+                    <td><label for="b100000" class="form-label">Billetes de 100.000</label></td>
+                    <td><input type="number" class="form-control mr-sm-0" id="b100" onkeypress="eventoacumular(event,value,100000,'b100')"></td>
+                    <td><label for="b1000" class="form-label">Billetes de 1000</label></td>
+                    <td><input type="number" class="form-control" id="b1" onkeypress="eventoacumular(event,value,1000,'b1')"></td>
+                  </tr>
+                  <tr>
+                    <td><label for="b50000" class="form-label" >Billetes de 50.000</label></td>
+                    <td><input type="number" class="form-control mr-sm-0" id="b50" onkeypress="eventoacumular(event,value,50000,'b50')"></td>
+                    <td><label for="m1000" class="form-label" >Monedas de 1000</label></td>
+                    <td><input type="number" class="form-control" id="m1000" onkeypress="eventoacumular(event,value,1000,'m1000')"></td>
+                  </tr>
+                  <tr>
+                    <td><label for="b200000" class="form-label">Billetes de 20.000</label></td>
+                    <td><input type="number" class="form-control mr-sm-0" id="b20" onkeypress="eventoacumular(event,value,20000,'b20')"></td>
+                    <td><label for="m500" class="form-label">Monedas de 500</label></td>
+                    <td><input type="number" class="form-control" id="m500" onkeypress="eventoacumular(event,value,500,'m500')"></td>
+                  </tr>
+                  <tr>
+                    <td><label for="b10000" class="form-label">Billetes de 10.000</label></td>
+                    <td><input type="number" class="form-control mr-sm-0" id="b10" onkeypress="eventoacumular(event,value,10000,'b10')"></td>
+                    <td><label for="m200" class="form-label">Monedas de 200</label></td>
+                    <td><input type="number" class="form-control" id="m200" onkeypress="eventoacumular(event,value,200,'m200')"></td>
+                  </tr>
+                  <tr>
+                    <td><label for="b5000" class="form-label">Billetes de 5.000</label></td>
+                    <td><input type="number" class="form-control mr-sm-0" id="b5" onkeypress="eventoacumular(event,value,5000,'b5')"></td>
+                    <td><label for="m100" class="form-label">Monedas de 100</label></td>
+                    <td><input type="number" class="form-control" id="m100" onkeypress="eventoacumular(event,value,100,'m100')"></td>
+                  </tr>
+                  <tr>
+                    <td><label for="b2000" class="form-label">Billetes de 2.000</label></td>
+                    <td><input type="number" class="form-control mr-sm-0" id="b2" onkeypress="eventoacumular(event,value,2000,'b2')"></td>
+                    <td><label for="m50" class="form-label">Monedas de 50</label></td>
+                    <td><input type="number" class="form-control" id="m50" onkeypress="eventoacumular(event,value,50,'m50')"></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="form-group row">
+                <label for="etiquetavalordecierre" class="col-sm-3 col-form-label">Valor de cierre</label>
+                <div class="col-sm-8">
+                  <input type="number" readonly class="form-control-plaintext text-right" id="valorcierre" value="0.0"> 
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="etiquetavalordecierre" class="col-sm-3 col-form-label">Entregado a</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="entregadoa" placeholder="0">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="etiquetaobservaciones" class="col-sm-3 col-form-label">Observaciones</label>
+                <div class="col-sm-8">
+                  <textarea name="observaciones" id="observaciones" cols="30" rows="3" class="form-control" ></textarea>
+                </div>
+              </div>
+            
+
+          </div>
+          
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <script>
+let monthNames = [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre",
+];
+let dayweek = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Vierenes", "Sabado"];
+
+let currentDate = new Date();
+let currentDay = currentDate.getDate();
+let currenmonth = currentDate.getMonth();
+let currentYear = currentDate.getFullYear();
+let currenhour = currentDate.getHours();
+let currenminut = currentDate.getMinutes();
+
+let fechapertura = document.getElementById('fechapertura');
+let fechaabrir = document.getElementById('fechabrir');
+
+let fechahoy = currentYear+"-"+(currenmonth+1)+"-"+currentDay + " "+ currenhour+":"+currenminut;
+
+fechapertura.innerHTML = fechahoy
+fechaabrir.innerHTML = fechahoy
+
+let valorcierre = document.getElementById('valorcierre');
+let acumulado = 0
+let b100pass = 0;
+let b50pass = 0;
+let b20pass = 0;
+let b10pass = 0;
+let b5pass = 0;
+let b2pass = 0;
+let b1pass = 0;
+let m1000pass = 0;
+let m500pass = 0;
+let m200pass = 0;
+let m100pass = 0;
+let m50pass = 0;
+
+function eventoacumular(e,valor,multiplicador,id) {
+  if (e.key == 'Enter') {
+    if (valor >= 0) {
+      switch(id) {
+        case 'b100':
+          if (valor != b100pass) {
+            acumulado = acumulado - b100pass*multiplicador;
+            acumulado +=valor*multiplicador;
+            b100pass = valor;
+          }
+          break;
+        case 'b50':
+          if (valor != b50pass) {
+              acumulado = acumulado - b50pass*multiplicador;
+              acumulado +=valor*multiplicador;
+              b50pass = valor;
+          }
+          break;
+        case 'b20':
+          if (valor != b20pass) {
+              acumulado = acumulado - b20pass*multiplicador;
+              acumulado +=valor*multiplicador;
+              b20pass = valor;
+          }
+          break;
+        case 'b10':
+          if (valor != b10pass) {
+              acumulado = acumulado - b10pass*multiplicador;
+              acumulado +=valor*multiplicador;
+              b10pass = valor;
+          }
+          break;
+        case 'b5':
+          if (valor != b5pass) {
+              acumulado = acumulado - b5pass*multiplicador;
+              acumulado +=valor*multiplicador;
+              b5pass = valor;
+          }
+          break;
+        case 'b2':
+          if (valor != b2pass) {
+              acumulado = acumulado - b2pass*multiplicador;
+              acumulado +=valor*multiplicador;
+              b2pass = valor;
+          }
+          break;
+        case 'b1':
+          if (valor != b1pass) {
+              acumulado = acumulado - b1pass*multiplicador;
+              acumulado +=valor*multiplicador;
+              b1pass = valor;
+          }
+          break;
+        case 'm1000':
+          if (valor != m1000pass) {
+              acumulado = acumulado - m1000pass*multiplicador;
+              acumulado +=valor*multiplicador;
+              m1000pass = valor;
+          }
+          break;
+        case 'm500':
+          if (valor != m500pass) {
+              acumulado = acumulado - m500pass*multiplicador;
+              acumulado +=valor*multiplicador;
+              m500pass = valor;
+          }
+          break;
+        case 'm200':
+          if (valor != m200pass) {
+              acumulado = acumulado - m200pass*multiplicador;
+              acumulado +=valor*multiplicador;
+              m200pass = valor;
+          }
+          break;
+        case 'm100':
+          if (valor != m100pass) {
+              acumulado = acumulado - m100pass*multiplicador;
+              acumulado +=valor*multiplicador;
+              m100pass = valor;
+          }
+          break;
+        case 'm50':
+          if (valor != m50pass) {
+              acumulado = acumulado - m50pass*multiplicador;
+              acumulado +=valor*multiplicador;
+              m50pass = valor;
+          }
+          break;
+        default:
+          // code block
+        }
+    }    
+    valorcierre.value = acumulado;
+  }
+}
+
+// b100.addEventListener('keypress',function (e) {
+//   if (e.key == 'Enter') {
+//     if (b100.value >= 0) {
+//       if (b100.value != b100pass) {
+//           acumulado = acumulado - b100pass*100000;
+//           acumulado +=b100.value*100000;
+//           b100pass = b100.value;
+//       }
+//     }    
+//   }
+//   valorcierre.value = acumulado;
+// });
+// b50.addEventListener('keypress',function (e) {
+//   if (e.key == 'Enter') {
+//     if (b50.value >= 0) {
+//       if (b50.value != b50pass) {
+//           acumulado = acumulado - b50pass*50000;
+//           acumulado +=b50.value*50000;
+//           b50pass = b50.value;
+//       }
+//     }    
+//   }
+//   valorcierre.value = acumulado;
+// });
+// b20.addEventListener('keypress',function (e) {
+//   if (e.key == 'Enter') {
+//     if (b20.value >= 0) {
+//       if (b20.value != b20pass) {
+//           acumulado = acumulado - b20pass*20000;
+//           acumulado +=b20.value*20000;
+//           b20pass = b20.value;
+//       }
+//     }    
+//   }
+//   valorcierre.value = acumulado;
+// });
+// b10.addEventListener('keypress',function (e) {
+//   if (e.key == 'Enter') {
+//     if (b10.value >= 0) {
+//       if (b10.value != b10pass) {
+//           acumulado = acumulado - b10pass*10000;
+//           acumulado +=b10.value*10000;
+//           b10pass = b10.value;
+//       }
+//     }    
+//   }
+//   valorcierre.value = acumulado;
+// });
+// b5.addEventListener('keypress',function (e) {
+//   if (e.key == 'Enter') {
+//     if (b5.value >= 0) {
+//       if (b5.value != b5pass) {
+//           acumulado = acumulado - b5pass*5000;
+//           acumulado +=b5.value*5000;
+//           b5pass = b5.value;
+//       }
+//     }    
+//   }
+//   valorcierre.value = acumulado;
+// });
+// b2.addEventListener('keypress',function (e) {
+//   if (e.key == 'Enter') {
+//     if (b2.value >= 0) {
+//       if (b2.value != b2pass) {
+//           acumulado = acumulado - b2pass*2000;
+//           acumulado +=b2.value*2000;
+//           b2pass = b2.value;
+//       }
+//     }    
+//   }
+//   valorcierre.value = acumulado;
+// });
+// b1.addEventListener('keypress',function (e) {
+//   if (e.key == 'Enter') {
+//     if (b1.value >= 0) {
+//       if (b1.value != b1pass) {
+//           acumulado = acumulado - b1pass*1000;
+//           acumulado +=b1.value*1000;
+//           b1pass = b1.value;
+//       }
+//     }    
+//   }
+//   valorcierre.value = acumulado;
+// });
+// m1000.addEventListener('keypress',function (e) {
+//   if (e.key == 'Enter') {
+//     if (m1000.value >= 0) {
+//       if (m1000.value != m1000pass) {
+//           acumulado = acumulado - m1000pass*1000;
+//           acumulado +=m1000.value*1000;
+//           m1000pass = m1000.value;
+//       }
+//     }    
+//   }
+//   valorcierre.value = acumulado;
+// });
+// m500.addEventListener('keypress',function (e) {
+//   if (e.key == 'Enter') {
+//     if (m500.value >= 0) {
+//       if (m500.value != m500pass) {
+//           acumulado = acumulado - m500pass*500;
+//           acumulado +=m500.value*500;
+//           m500pass = m500.value;
+//       }
+//     }    
+//   }
+//   valorcierre.value = acumulado;
+// });
+
+
+
+  </script>
+{% endblock cuerpo %}

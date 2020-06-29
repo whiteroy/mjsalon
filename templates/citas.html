@@ -1,0 +1,112 @@
+{% extends 'base.html' %} {% load static %} {% block cuerpo %}
+<div class="container">
+  <div class="jumbotron text-center" style="margin-bottom:0">
+    <h2>Agenda tu cita</h2>
+    <p>Bienvenidos al sistema de Agendamiento web</p>
+    <!-- Button to Open the Modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+      Agendar cita
+    </button>
+  </div>
+
+  
+
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Agendar cita</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <input
+            type="text"
+            name="identificacion"
+            id="identificacion"
+            placeholder="identificacion"
+            class="form-control form-group"
+          />
+          <input
+            type="text"
+            name="nombre"
+            id="nombre"
+            placeholder="Nombre"
+            class="form-control form-group"
+          />
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email"
+            class="form-control form-group"
+          />
+          <input
+            type="tel"
+            name="celular"
+            id="celular"
+            placeholder="Celular"
+            class="form-control form-group"
+          />
+          <select id="servicios" class="custom-select form-group">
+            <option selected>Escoja un servicio a agendar</option>
+            <option>corte</option>
+            <option>uñas</option>
+            <option>cejas</option>
+            <option>depilacion</option>
+            <option>pies</option>
+            <option>spa</option>
+          </select>
+          <select id="usuario" class="custom-select form-group">
+            <option selected>quien desea que lo atienda</option>
+            <option>susana</option>
+            <option>ana</option>
+            <option>lucia</option>
+            <option>yohana</option>
+            <option>andrea</option>
+            <option>mayerli</option>
+          </select>
+          <input
+            type="date"
+            name="fecha"
+            id="fecha"
+            placeholder="Fecha"
+            class="form-control form-group"
+          />
+          <input type="time" name="hora" id="hora" placeholder="Hora" class="form-control" />
+          <div class="form-group">
+            <span id="pregunta"> ¿cuanto es ?</span>
+            <input
+              type="number"
+              name="sumatoria"
+              id="sumatoria"
+              placeholder="Digite la suma"
+              class="form-control"
+            />
+            <span>Necesitamos asegurarnos que eres humano</span>
+          </div>
+          <div class="centrar_todo modal-footer">
+            <button type="submit" class="btn btn-primary alargue11 centrar_todo">Enviar</button>
+          </div>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let num1 = Math.floor(Math.random() * 10 + 1);
+  let num2 = Math.floor(Math.random() * 10 + 1);
+  let pregunta = document.getElementById("pregunta");
+  let sumatoria = document.getElementById("sumatoria");
+  pregunta.innerHTML = "¿cuanto es " + num1 + " + " + num2 + " ?";
+</script>
+{% endblock cuerpo %}
